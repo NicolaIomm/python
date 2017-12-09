@@ -7,7 +7,7 @@ connection = http.client.HTTPConnection("www.python.it")
 connectionS = http.client.HTTPSConnection("www.python.org")
 
     # Effettuo richiesta HTTP
-    #HTTPConnection.request(method, url, body=None, headers={}, *, encoded_chunked=False)
+    # HTTPConnection.request(method, url, body=None, headers={}, *, encoded_chunked=False)
 connection.request("GET", "/")
 
     # Leggo la risposta alla mia richiesta per poi analizzarla

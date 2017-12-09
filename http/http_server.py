@@ -26,14 +26,32 @@ class myHttpRequestHandler(http.server.BaseHTTPRequestHandler):
             self.end_headers()  #write blank line and call self.flush_headers()
     
             # Send message back to client
-            message = "Hai richiesto la risorsa '/ciao' !"
+            message = "UAUAUAUAUUAUAU !"
             # Write content as byte stream
             self.wfile.write(message.encode()) # altro modo di convertire stringa a flusso di byte: bytes("ciao", "utf8")
-        return
+        else:
+            self.send_response(200,"OK")
+            self.send_header('Content-type','text/html')
+            self.end_headers()
+
+            message = "Hai richiesto la risorsa %s" % self.path
+            self.wfile.write(message.encode())
 
     # server address as tuple (address, port)
 server_address = ("127.0.0.1", 3000)
+
+print("Server avviato su",server_address)
+
     # creo l'oggetto server specificando server_address e gestore delle richieste
 webserver = http.server.HTTPServer(server_address, myHttpRequestHandler)
     # comunico al server di rispondere per sempre alle richieste
-webserver.serve_forever()
+try:
+    webserver.serve_forever()
+except KeyboardInterrupt:
+    print("Server in chiusura")
+    webserver.shutdown()
+    
+
+
+#webserver.handle_request() #-> Handle only one request
+
