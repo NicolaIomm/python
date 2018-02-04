@@ -1,3 +1,3 @@
-# reti_python
+# python_experiments
 
-Questo è il progetto per Reti Dei Calcolatori 2017/18
+This project contains some experiments on Python language
